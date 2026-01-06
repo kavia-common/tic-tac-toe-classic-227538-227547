@@ -1,104 +1,336 @@
-/* CSS Variables for Theme Management */
+/* Rainbow Burst Theme (playful) */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --rb-bg: #f9fafb; /* background */
+  --rb-surface: #ffffff; /* surface */
+  --rb-text: #111827; /* text */
+  --rb-primary: #ec4899; /* accent */
+  --rb-success: #10b981; /* accent */
+  --rb-secondary: #8b5cf6; /* secondary */
+  --rb-error: #ef4444;
+
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  --shadow-soft: 0 6px 18px rgba(17, 24, 39, 0.08);
+  --ring: 0 0 0 4px rgba(236, 72, 153, 0.15);
+
+  --radius-xl: 20px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+* {
+  box-sizing: border-box;
 }
 
-.App {
+.ttt-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(700px 300px at 20% 10%, rgba(236, 72, 153, 0.12), transparent 60%),
+    radial-gradient(600px 280px at 80% 20%, rgba(16, 185, 129, 0.12), transparent 60%),
+    radial-gradient(700px 380px at 50% 90%, rgba(139, 92, 246, 0.12), transparent 60%),
+    var(--rb-bg);
+  color: var(--rb-text);
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.ttt-shell {
+  width: 100%;
+  max-width: 520px;
+}
+
+.ttt-header {
   text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 18px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ttt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rb-text);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 72, 153, 0.18),
+    rgba(16, 185, 129, 0.18),
+    rgba(139, 92, 246, 0.18)
+  );
+  border: 1px solid rgba(17, 24, 39, 0.08);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ttt-title {
+  margin: 12px 0 6px;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.ttt-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(17, 24, 39, 0.72);
+}
+
+.ttt-card {
+  background: var(--rb-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  padding: 18px;
+}
+
+.ttt-status {
+  padding: 10px 10px 14px;
+}
+
+.ttt-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ttt-status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 10px 14px;
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 72, 153, 0.10),
+    rgba(16, 185, 129, 0.10)
+  );
+  min-height: 40px;
+}
+
+.ttt-status-label {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.ttt-turn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.04);
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  min-height: 40px;
+}
+
+.ttt-chip-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.70);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ttt-chip-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.ttt-chip-mark.is-x {
+  background: linear-gradient(135deg, var(--rb-primary), var(--rb-secondary));
+}
+
+.ttt-chip-mark.is-o {
+  background: linear-gradient(135deg, var(--rb-success), var(--rb-secondary));
+}
+
+.ttt-status-help {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(17, 24, 39, 0.70);
+}
+
+.ttt-board {
+  margin-top: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(90deg, rgba(236, 72, 153, 0.08), rgba(16, 185, 129, 0.08)),
+    rgba(17, 24, 39, 0.02);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.ttt-square {
+  appearance: none;
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  background: var(--rb-surface);
+  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(17, 24, 39, 0.04);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.ttt-square:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08);
+  border-color: rgba(236, 72, 153, 0.35);
+}
+
+.ttt-square:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow), var(--ring);
+  border-color: rgba(236, 72, 153, 0.55);
+}
+
+.ttt-square:disabled {
+  cursor: not-allowed;
+  opacity: 0.92;
+}
+
+.ttt-square.is-winning {
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.16);
+}
+
+.ttt-mark {
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.ttt-mark.is-X {
+  background: linear-gradient(135deg, var(--rb-primary), var(--rb-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ttt-mark.is-O {
+  background: linear-gradient(135deg, var(--rb-success), var(--rb-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ttt-actions {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  padding: 14px 10px 8px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+.ttt-btn {
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 280px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--rb-primary), var(--rb-success));
+  box-shadow: 0 12px 24px rgba(236, 72, 153, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.ttt-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 16px 30px rgba(236, 72, 153, 0.22);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.ttt-btn:active {
+  transform: translateY(0px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.ttt-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 16px 30px rgba(236, 72, 153, 0.22), var(--ring);
+}
+
+.ttt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  justify-content: center;
+  color: rgba(17, 24, 39, 0.70);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ttt-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  background: rgba(17, 24, 39, 0.03);
+}
+
+.ttt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.ttt-dot.is-x {
+  background: var(--rb-primary);
+}
+
+.ttt-dot.is-o {
+  background: var(--rb-success);
+}
+
+.ttt-dot.is-win {
+  background: var(--rb-secondary);
+}
+
+.ttt-footer {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(17, 24, 39, 0.60);
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .ttt-title {
+    font-size: 34px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .ttt-card {
+    padding: 14px;
+  }
+
+  .ttt-board {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .ttt-mark {
+    font-size: 42px;
   }
 }
